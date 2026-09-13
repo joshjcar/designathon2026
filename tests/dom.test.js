@@ -223,6 +223,12 @@ check('verdict shows idle state', $('verdict').textContent.indexOf('Nothing to p
 check('timeline shows empty state', $('timelineWrap').textContent.indexOf('No windows to draw') > -1);
 check('no crash with zero data', errors.length === 0, errors.join(' | '));
 
+check('empty state offers a working demo button', !!$('allList').querySelector('[data-loaddemo]'));
+$('allList').querySelector('[data-loaddemo]').dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+check('empty-state button loads the demo', $('allList').querySelectorAll('.taskrow').length === 10,
+  String($('allList').querySelectorAll('.taskrow').length));
+
+$('btnReset').dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
 $('btnDemo').dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
 check('demo restores 10 assessments', $('allList').querySelectorAll('.taskrow').length === 10);
 check('demo restores 5 courses', $('courseList').children.length === 5);

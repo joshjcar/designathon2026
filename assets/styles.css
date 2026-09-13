@@ -533,6 +533,10 @@ a:hover { color: var(--brand); }
 
 @media (max-width: 1000px) {
   .planner-grid { grid-template-columns: 1fr; }
+  /* Stacked on one column, source order would put four panels of empty form
+     controls above the result. Results first; the controls follow. */
+  .planner-grid > .stack { order: 1; }
+  .planner-grid > .rail { order: 2; }
   .hero-grid { grid-template-columns: 1fr; gap: var(--sp-6); }
   .hero-art { transform: none; }
   .beats, .ev { grid-template-columns: 1fr; }
@@ -568,4 +572,4 @@ a:hover { color: var(--brand); }
   body { background: #fff; }
   .panel { box-shadow: none; border: 1px solid #999; break-inside: avoid; }
 }
-/* build: 2026-09-13T18:04Z */
+/* build: 2026-09-13T18:11Z */

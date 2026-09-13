@@ -155,6 +155,17 @@
 
   /* ---------------- rendering ---------------- */
 
+  function loadDemo() {
+    state = demoState();
+    $('weeklyHours').value = state.settings.weeklyHours;
+    $('semStart').value = state.settings.semesterStart;
+    $('semEnd').value = state.settings.semesterEnd;
+    selectedWeek = null;
+    resetTaskForm();
+    recompute();
+    toast('Example semester loaded.');
+  }
+
   function recompute() {
     plan = E.schedule(state);
     renderAll();
@@ -250,7 +261,8 @@
 
     if (!plan.results.length) {
       box.innerHTML = '<div class="empty"><h3>Nothing here yet</h3>' +
-        '<p>Add an assessment or load the example semester.</p></div>';
+        '<p>Add an assessment on the left, or see how it works with a ready-made semester.</p>' +
+        '<button type="button" class="btn btn-primary" data-loaddemo>Load example semester</button></div>';
       return;
     }
     if (!urgent.length) {
@@ -438,7 +450,8 @@
     var box = $('allList');
     if (!state.tasks.length) {
       box.innerHTML = '<div class="empty"><h3>No assessments yet</h3>' +
-        '<p>Use the form on the left, or load the example semester to explore.</p></div>';
+        '<p>Use the form on the left, or explore a ready-made semester first.</p>' +
+        '<button type="button" class="btn btn-primary" data-loaddemo>Load example semester</button></div>';
       return;
     }
 
@@ -644,8 +657,10 @@
 
     /* delegated actions across the results column */
     document.addEventListener('click', function (ev) {
-      var el = ev.target.closest ? ev.target.closest('[data-del],[data-edit],[data-delcourse],[data-week],#btnClearWeek') : null;
+      var el = ev.target.closest ? ev.target.closest('[data-del],[data-edit],[data-delcourse],[data-week],[data-loaddemo],#btnClearWeek') : null;
       if (!el) return;
+
+      if (el.hasAttribute('data-loaddemo')) { loadDemo(); return; }
 
       if (el.id === 'btnClearWeek') {
         selectedWeek = null; renderChart(); renderWeekDetail(); return;
@@ -723,16 +738,8 @@
     /* data controls */
     $('btnDemo').addEventListener('click', function () {
       if (state.tasks.length && !window.confirm('This replaces what is currently here. Continue?')) return;
-      state = demoState();
-      $('weeklyHours').value = state.settings.weeklyHours;
-      $('semStart').value = state.settings.semesterStart;
-      $('semEnd').value = state.settings.semesterEnd;
-      selectedWeek = null;
-      resetTaskForm();
-      recompute();
-      toast('Example semester loaded.');
+      loadDemo();
     });
-
     $('btnIcs').addEventListener('click', function () {
       if (!plan.results.length) { toast('Nothing to put in a calendar yet.'); return; }
       download('startline.ics', E.toICS(plan), 'text/calendar;charset=utf-8');
