@@ -272,6 +272,11 @@ a:hover { color: var(--brand); }
    so it never has to overflow — no breakpoint guessing required */
 .field-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(152px, 1fr)); gap: var(--sp-3); }
 .field-row > * { min-width: 0; }
+
+/* Belt and braces: inside the narrow rail, always stack. Date inputs have a
+   browser-dependent intrinsic width (Safari's is far wider than Chrome's),
+   so this does not rely on measuring anything. */
+.rail .field-row { grid-template-columns: 1fr; }
 .hint { font-size: 13.5px; color: var(--ink-3); margin: 6px 0 0; line-height: 1.45; }
 .field-error { font-size: 14px; color: var(--over); margin: 7px 0 0; font-weight: 600; }
 .invalid input, .invalid select { border-color: var(--over); }
@@ -471,3 +476,4 @@ a:hover { color: var(--brand); }
   body { background: #fff; }
   .panel { box-shadow: none; border: 1px solid #999; break-inside: avoid; }
 }
+/* build: 2026-09-13T17:50Z */
