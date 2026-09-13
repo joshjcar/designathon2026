@@ -233,35 +233,45 @@ a:hover { color: var(--brand); }
 .planner-head { margin-bottom: var(--sp-5); }
 .planner-head h1 { font-size: clamp(32px, 4vw, 46px); }
 .planner-grid { display: grid; grid-template-columns: 348px 1fr; gap: var(--sp-5); align-items: start; }
+.planner-grid > * { min-width: 0; }
 /* The rail is deliberately NOT sticky. It holds four stacked panels and is
    always taller than the viewport, and a sticky element taller than the
    viewport gets pinned with its lower half unreachable — which reads as the
    column scrolling at a different speed to the rest of the page. */
 .rail { min-width: 0; }
-.stack { display: flex; flex-direction: column; gap: var(--sp-4); }
+.stack { display: flex; flex-direction: column; gap: var(--sp-4); min-width: 0; }
 
 .panel {
   background: var(--surface); border-radius: var(--r-lg);
   padding: var(--sp-5); box-shadow: var(--sh-1);
+  min-width: 0; overflow-wrap: anywhere;
 }
 .panel h2 { font-size: 20px; margin-bottom: var(--sp-4); }
 .panel h3 { font-size: 17px; margin-bottom: var(--sp-2); }
 
 /* ---------------- forms ---------------- */
 
-.field { margin-bottom: var(--sp-4); }
+.field { margin-bottom: var(--sp-4); min-width: 0; }
 .field label { display: block; font-size: 14px; font-weight: 600; color: var(--ink-2); margin-bottom: 7px; }
 .field input, .field select, .field textarea {
-  width: 100%; font: inherit; font-size: 16px;
+  width: 100%; min-width: 0; max-width: 100%;
+  font: inherit; font-size: 16px;
   padding: 12px 14px; border: 1.5px solid var(--line-2);
   border-radius: var(--r-md); background: var(--surface); color: var(--ink);
   transition: border-color .15s, box-shadow .15s;
 }
+/* Date fields carry a native picker with a wide intrinsic size. Without this
+   they refuse to shrink and burst out of the card on narrow columns. */
+.field input[type="date"] { padding-inline: 10px; }
+.field input::-webkit-date-and-time-value { text-align: left; margin: 0; }
 .field input:hover, .field select:hover { border-color: var(--ink-3); }
 .field input:focus, .field select:focus {
   border-color: var(--brand); box-shadow: 0 0 0 4px rgba(59,49,232,.14); outline: none;
 }
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
+/* auto-fit collapses this to a single column whenever two would not fit,
+   so it never has to overflow — no breakpoint guessing required */
+.field-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(152px, 1fr)); gap: var(--sp-3); }
+.field-row > * { min-width: 0; }
 .hint { font-size: 13.5px; color: var(--ink-3); margin: 6px 0 0; line-height: 1.45; }
 .field-error { font-size: 14px; color: var(--over); margin: 7px 0 0; font-weight: 600; }
 .invalid input, .invalid select { border-color: var(--over); }
@@ -293,10 +303,11 @@ a:hover { color: var(--brand); }
 
 .tasklist { list-style: none; margin: 0; padding: 0; }
 .taskrow {
-  display: grid; grid-template-columns: 28px 1fr auto;
+  display: grid; grid-template-columns: 28px minmax(0, 1fr) auto;
   gap: var(--sp-3); align-items: start;
   padding: var(--sp-4) 0; border-top: 1px solid var(--line);
 }
+.taskrow > * { min-width: 0; }
 .taskrow:first-child { border-top: 0; padding-top: 0; }
 .taskrow.is-behind {
   background: linear-gradient(90deg, var(--over-t), transparent 65%);
@@ -441,7 +452,6 @@ a:hover { color: var(--brand); }
   .btn { padding: 13px 20px; font-size: 15px; }
   .taskrow { grid-template-columns: 28px 1fr; }
   .task-actions { grid-column: 2; margin-top: var(--sp-2); }
-  .field-row { grid-template-columns: 1fr; }
   .tl-row, .tl-axis { grid-template-columns: 130px 1fr; }
   .timeline { min-width: 540px; }
   .weekcol-bars { height: 150px; }
