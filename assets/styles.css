@@ -233,7 +233,11 @@ a:hover { color: var(--brand); }
 .planner-head { margin-bottom: var(--sp-5); }
 .planner-head h1 { font-size: clamp(32px, 4vw, 46px); }
 .planner-grid { display: grid; grid-template-columns: 348px 1fr; gap: var(--sp-5); align-items: start; }
-.rail { position: sticky; top: 84px; }
+/* The rail is deliberately NOT sticky. It holds four stacked panels and is
+   always taller than the viewport, and a sticky element taller than the
+   viewport gets pinned with its lower half unreachable — which reads as the
+   column scrolling at a different speed to the rest of the page. */
+.rail { min-width: 0; }
 .stack { display: flex; flex-direction: column; gap: var(--sp-4); }
 
 .panel {
@@ -421,7 +425,6 @@ a:hover { color: var(--brand); }
 
 @media (max-width: 1000px) {
   .planner-grid { grid-template-columns: 1fr; }
-  .rail { position: static; }
   .hero-grid { grid-template-columns: 1fr; gap: var(--sp-6); }
   .hero-art { transform: none; }
   .beats, .ev { grid-template-columns: 1fr; }
