@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problem &amp; Solution — Startline</title>
+<meta name="description" content="The problem Startline addresses, the research behind it, the solution, and why it matters.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%233A34D6'/><rect x='7' y='7' width='4' height='18' fill='white'/><rect x='15' y='14' width='10' height='4' fill='white' opacity='.85'/></svg>">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="#3A34D6"/>
+        <rect x="7" y="7" width="4" height="18" fill="#fff"/>
+        <rect x="15" y="14" width="10" height="4" fill="#fff" opacity=".85"/>
+      </svg>
+      Startline
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="planner.html">Planner</a>
+      <a href="problem-solution.html" aria-current="page">Problem &amp; Solution</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="section">
+  <div class="wrap-narrow prose">
+
+    <h1 style="font-size:clamp(32px,4.6vw,48px);margin-bottom:var(--sp-4)">Problem &amp; Solution</h1>
+    <p class="lede">Students are not short of tools that store deadlines. They are short of one number that no tool gives them: the day a piece of work has to begin if it is going to be finished properly.</p>
+
+    <nav class="toc" aria-label="On this page">
+      <ol>
+        <li><a href="#problem">The problem</a></li>
+        <li><a href="#research">The research</a></li>
+        <li><a href="#solution">The solution</a></li>
+        <li><a href="#matters">Why it matters</a></li>
+        <li><a href="#limits">What this does not fix</a></li>
+        <li><a href="#access">Accessibility</a></li>
+        <li><a href="#refs">References</a></li>
+      </ol>
+    </nav>
+
+    <!-- ================= 1 ================= -->
+    <h2 id="problem">1. The problem</h2>
+
+    <p>Every semester follows the same shape. Deadlines are published in week one. Students write them down — in a calendar app, a notes app, a paper diary, or the course page itself. Then in week seven, three of those deadlines land within five days of each other and everything is done badly, late, or overnight.</p>
+
+    <p>The obvious explanation is that students forgot, or did not care, or lack discipline. Each of those leads to an obvious product: a better reminder, a streak counter, a focus timer. Those products exist in large numbers, and the problem persists.</p>
+
+    <p>I think the obvious explanation is wrong, and that the real failure is narrower and more mechanical.</p>
+
+    <blockquote>
+      <p><strong>A deadline is a fact about the work. A start date is a fact about your life.</strong> The deadline is handed to you. The start date has to be calculated from how long the work takes, how many hours you actually have free, and what else is competing for those same hours — and nobody, including the student, ever does that calculation.</p>
+    </blockquote>
+
+    <p>So students carry a calendar that is, on its own terms, complete and correct, and which still conceals the thing that determines whether they cope: that a 3,000-word report due in three weeks needed to begin last Tuesday, because the two weeks before it are already spoken for by a midterm.</p>
+
+    <h3>Who this affects, and how it differs between them</h3>
+
+    <ul>
+      <li><strong>Students carrying four or five courses at once.</strong> A single course's workload is easy to hold in your head. The failure is an interaction effect — it only appears when several courses' demands overlap, and no individual course page can show it, because no course knows about the others.</li>
+      <li><strong>Students with genuinely limited free hours:</strong> those working part-time, commuting an hour each way, or with family responsibilities at home. These students are hurt most by the hidden calculation, because their real capacity is furthest from the capacity a syllabus silently assumes.</li>
+      <li><strong>First-year students.</strong> Estimating how long university work takes is a skill built from having done university work. In the first two semesters there is no personal history to estimate from.</li>
+      <li><strong>Students who are already organised.</strong> Worth naming, because this is the group most existing tools help least. They have the deadlines logged, the reminders on, and the notes tidy — and they still get caught, because organisation is not the same as arithmetic.</li>
+    </ul>
+
+    <!-- ================= 2 ================= -->
+    <h2 id="research">2. The research</h2>
+
+    <h3>What the literature says</h3>
+
+    <p>Three findings shaped this project, and the second and third are the reason it takes the form it does.</p>
+
+    <p><strong>The problem is the norm, not an edge case.</strong> Steel's meta-analysis of the procrastination literature puts the share of university students who procrastinate on coursework at roughly 80 to 95 per cent. A behaviour that common is better treated as a predictable property of how semesters are structured than as a defect in individual students.</p>
+
+    <p><strong>Students misjudge duration in a specific, measurable direction.</strong> Buehler, Griffin and Ross asked students to predict when they would finish a thesis. The average prediction fell well short: the work actually took 55.5 days on average, while the students' own <em>worst-case</em> estimate — what they thought would happen if everything went badly — averaged 48.6 days. Their pessimistic guess was still too optimistic. A related study asked students for the date by which they were 99 per cent certain a personal project would be done; fewer than half made it.</p>
+
+    <p>This reframes the whole problem. If students consistently underestimate duration, then the fix is not more willpower applied at the deadline. It is arithmetic applied at the start — because the error is in the estimate, and an estimate is something a machine can correct for and a person cannot.</p>
+
+    <p><strong>Deciding when you will act is the intervention with the best evidence behind it.</strong> Gollwitzer and Sheeran's meta-analysis of 94 independent tests found that forming an implementation intention — a concrete plan specifying when, where and how you will act, rather than a general intention to act — had a medium-to-large effect on whether the goal was reached (d = 0.65). The effect held across health, academic and professional settings.</p>
+
+    <p>That finding is the entire design brief for this tool. If specifying <em>when</em> is the highest-leverage thing a student can do, and the <em>when</em> is the one value no planner computes, then computing it is the product.</p>
+
+    <h3>What I asked students directly</h3>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         PLACEHOLDER — REPLACE BEFORE SUBMITTING.
+         Run the survey, then put your real numbers in below and
+         delete this comment. Do not submit with invented figures.
+         ───────────────────────────────────────────────────────── -->
+    <div class="panel" style="border-left:3px solid var(--brand)">
+      <p><strong>[ Replace this block with your own survey results. ]</strong></p>
+      <p class="small muted">Ask 20–30 students these six questions, then report what came back — including anything that contradicted the assumption above. Honest small-sample findings score better than impressive vague ones, and a judge can tell the difference.</p>
+      <ol class="small">
+        <li>How many courses are you taking this semester?</li>
+        <li>Roughly how many hours a week are genuinely free for coursework, after classes, work, travel and sleep?</li>
+        <li>Do you keep your deadlines anywhere? Where?</li>
+        <li>For your last major assignment, when did you intend to start, and when did you actually start?</li>
+        <li>Has more than one significant deadline ever landed in the same week without you seeing it coming? What happened?</li>
+        <li>Have you ever worked out, in advance, the date you needed to begin something? If not, why not?</li>
+      </ol>
+      <p class="small muted">Report at minimum: sample size, how you recruited them, the gap between intended and actual start in question 4, and the share answering "no" to question 6.</p>
+    </div>
+
+    <h3>What I concluded from it</h3>
+
+    <p>The two bodies of evidence point the same way. Students hold accurate deadline information and inaccurate duration information, and the planning step that would reconcile the two is a calculation nobody performs — partly because it is tedious, and mostly because it requires knowing what every other course is doing at the same time.</p>
+
+    <p>That is a good problem for software. It is arithmetic over data the student already has, producing a single date they cannot easily produce themselves.</p>
+
+    <!-- ================= 3 ================= -->
+    <h2 id="solution">3. The solution</h2>
+
+    <p><strong>Startline</strong> is a semester planner that runs backwards. You enter your courses, your assessments, and one honest number — the hours you actually have free in a week. It returns, for every assessment, the last day you can begin it and still finish it within the hours you have.</p>
+
+    <h3>What it does</h3>
+
+    <ul>
+      <li><strong>Computes a start date for every assessment</strong>, not just a deadline. This is the one output that does not exist in any calendar.</li>
+      <li><strong>Resolves collisions before you meet them.</strong> Hours are a shared pool. When two assessments want the same evenings, the tool allocates them once and pushes the loser earlier, so the dates it gives you are dates that can all be true at the same time.</li>
+      <li><strong>Names the weeks that will break.</strong> The load chart compares what each week demands against what you actually have, and hatches the part with nowhere to go.</li>
+      <li><strong>Says what is at stake.</strong> Each week reports the share of your semester grade falling due in it, weighted by course credits — so a heavy week is distinguishable from an expensive one.</li>
+      <li><strong>Tells you when you are already late</strong>, which is the finding most students never get until it is too late to act on.</li>
+      <li><strong>Exports to a real calendar file</strong>, putting the start dates into whatever app you already use. A plan that lives only inside the tool that made it will not be followed.</li>
+    </ul>
+
+    <h3>What I deliberately left out</h3>
+
+    <p>A planner is an easy thing to overbuild, and every extra feature makes the one useful number harder to see. I removed the following on purpose:</p>
+
+    <ul>
+      <li><strong>Accounts and sync.</strong> The tool is useful in the first sixty seconds. Asking for an email address first would lose most of the people it is for, and would mean holding student data I have no business holding.</li>
+      <li><strong>Notifications and streaks.</strong> The evidence points at knowing the start date, not at being nagged. Streaks also punish exactly the students with the least control over their week.</li>
+      <li><strong>A grade-target calculator.</strong> Tempting and off-topic. The question here is when to start, not what mark is still reachable.</li>
+      <li><strong>Sharing and social features.</strong> Nothing in the research suggested comparing workloads helps, and some of it suggests the opposite.</li>
+    </ul>
+
+    <h3>How the calculation works</h3>
+
+    <p>The scheduler is deliberately simple enough to argue with. Your weekly hours are divided across seven days to give a daily budget. Assessments are taken in deadline order, nearest first. Each claims hours backwards from the day before it is due, taking whatever remains unclaimed on each day and walking further back when a day is full. The earliest day it claims is its startline.</p>
+
+    <p>Working just-in-time rather than spreading evenly is a choice: it yields the <em>latest</em> honest start date. If even that date has passed, there is no optimistic reading of the situation left, and the tool can say so plainly.</p>
+
+    <p>This is a greedy rule, not an optimal schedule. Producing a provably optimal multi-deadline timetable is computationally hard, and — more to the point — unexplainable. A student who cannot see why a date is what it is will not trust it when it tells them something unwelcome, which is precisely when it matters.</p>
+
+    <!-- ================= 4 ================= -->
+    <h2 id="matters">4. Why it matters</h2>
+
+    <p>The immediate cost of a missing start date is a bad week. The costs worth caring about are further downstream.</p>
+
+    <ul>
+      <li><strong>Grades fall for reasons unrelated to understanding.</strong> A student who understands the material and starts four days late submits work that looks like a student who did not understand it. The mark records the wrong thing.</li>
+      <li><strong>The damage lands on the heaviest assessments.</strong> Big pieces of work need long runways, so they are the most likely to have a start date that quietly passed. The tasks most able to hurt a final grade are the ones most exposed.</li>
+      <li><strong>The stress is avoidable and arrives anyway.</strong> Discovering a collision the week it happens leaves no options. Discovering it in advance leaves several: start earlier, ask for an extension while asking is still reasonable, or drop something deliberately rather than by accident.</li>
+      <li><strong>It falls hardest on students with least slack.</strong> A student with thirty free hours a week absorbs a bad estimate. A student working shifts or commuting two hours a day does not. Making capacity an explicit input means the plan reflects the week they actually have, instead of the one a syllabus assumes.</li>
+      <li><strong>Knowing in advance is worth more than being reminded.</strong> A reminder tells you something is due. A start date tells you what to do today, which is the only day you can act on.</li>
+    </ul>
+
+    <p>The aim is not to make anyone work more hours. It is to move the same hours earlier, where they are worth more.</p>
+
+    <!-- ================= limits ================= -->
+    <h2 id="limits">5. What this does not fix</h2>
+
+    <p>Stating this plainly, because a tool that claims to solve procrastination outright would be lying.</p>
+
+    <ul>
+      <li><strong>It depends on your effort estimates, and the research says those are wrong.</strong> The tool corrects for collisions, not for optimism. Its one defence is that changing an estimate takes a second and the whole semester visibly rearranges, which makes the cost of a bad guess obvious rather than hidden.</li>
+      <li><strong>Knowing the date is not the same as keeping it.</strong> The evidence says specifying <em>when</em> helps substantially; it does not say it is sufficient.</li>
+      <li><strong>Averaging your hours across seven days is a simplification.</strong> Real weeks are lumpy. Per-day capacity is the most obvious next thing to build.</li>
+      <li><strong>Entry is manual.</strong> Reading deadlines straight out of a syllabus PDF would remove the largest barrier to using it, and is the change I would make next.</li>
+      <li><strong>It has not been tested over a real semester.</strong> Whether students who see their start dates actually start earlier is an empirical question this project has not answered.</li>
+    </ul>
+
+    <!-- ================= access ================= -->
+    <h2 id="access">6. Accessibility</h2>
+
+    <p>The students least able to absorb a bad week are not always the students browsing on a fast laptop with full vision and a steady hand. What was built in:</p>
+
+    <ul>
+      <li>Every control is reachable and operable by keyboard, with a visible focus ring that meets contrast requirements.</li>
+      <li>Colour never carries meaning alone. Every load level has a written label, over-capacity work is hatched as well as coloured, and the chart has a full data-table equivalent behind one button.</li>
+      <li>The chart is built from real buttons, each carrying a screen-reader description of that week's hours, load and grade at stake.</li>
+      <li>Results announce themselves through a polite live region, so a change is heard as well as seen.</li>
+      <li>Form errors are tied to their fields, describe what to do rather than what went wrong, and move focus to the first problem.</li>
+      <li>Text meets AA contrast throughout; the layout reflows to a single column on small screens and stays usable at 200% zoom.</li>
+      <li>The single page-load animation is skipped entirely for anyone whose system asks for reduced motion.</li>
+      <li>No account, no tracking, no third-party scripts. Data is stored on the device and can be exported or erased from the planner.</li>
+    </ul>
+
+    <!-- ================= refs ================= -->
+    <h2 id="refs">7. References</h2>
+    <ol class="refs">
+      <li>Steel, P. (2007). The nature of procrastination: a meta-analytic and theoretical review of quintessential self-regulatory failure. <i>Psychological Bulletin</i>, 133(1), 65–94.</li>
+      <li>Buehler, R., Griffin, D., &amp; Ross, M. (1994). Exploring the "planning fallacy": why people underestimate their task completion times. <i>Journal of Personality and Social Psychology</i>, 67(3), 366–381.</li>
+      <li>Gollwitzer, P. M., &amp; Sheeran, P. (2006). Implementation intentions and goal achievement: a meta-analysis of effects and processes. <i>Advances in Experimental Social Psychology</i>, 38, 69–119.</li>
+    </ol>
+
+    <hr class="rule">
+    <p><a class="btn btn-primary" href="planner.html">Open the planner</a></p>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Startline</strong> — built for DesignAthon 2026, GDC RIT Dubai in partnership with +TWE.</p>
+  </div>
+</footer>
+</body>
+</html>

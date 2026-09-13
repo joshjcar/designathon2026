@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Startline — see when you need to start, not just when it's due</title>
+<meta name="description" content="Startline works backwards from every deadline in your semester and tells you the last honest day you can begin each piece of work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%233A34D6'/><rect x='7' y='7' width='4' height='18' fill='white'/><rect x='15' y='14' width='10' height='4' fill='white' opacity='.85'/></svg>">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="#3A34D6"/>
+        <rect x="7" y="7" width="4" height="18" fill="#fff"/>
+        <rect x="15" y="14" width="10" height="4" fill="#fff" opacity=".85"/>
+      </svg>
+      Startline
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="planner.html">Planner</a>
+      <a href="problem-solution.html">Problem &amp; Solution</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Your calendar knows when things are due. It has no idea when you needed to start.</h1>
+        <p class="hero-sub">Startline reads your semester backwards. It works out how many free hours you actually have, how much each piece of work really takes, and returns the last honest day you can begin — before the deadline decides for you.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="planner.html">Open the planner</a>
+          <a class="btn" href="problem-solution.html">Read the research</a>
+        </div>
+      </div>
+
+      <figure class="hero-art">
+        <svg viewBox="0 0 520 210" role="img" aria-labelledby="heroTitle heroDesc" style="width:100%;height:auto">
+          <title id="heroTitle">A deadline with its startline marked six days in the past</title>
+          <desc id="heroDesc">A 4,000 word report is due on 20 November. It needs 18 hours of work. At 7 free hours a week, the student needed to begin on 2 November. Today is 8 November, so the start date passed six days ago.</desc>
+
+          <text x="20" y="22" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="#5F6875">Report, 4,000 words — 18 hours of work</text>
+
+          <!-- baseline -->
+          <line x1="20" y1="118" x2="500" y2="118" stroke="#D3D9E0" stroke-width="2"/>
+
+          <!-- work window -->
+          <rect id="win" x="120" y="98" width="340" height="40" rx="4"
+                fill="#E6E5FA" stroke="#3A34D6" stroke-width="1.5"/>
+          <rect x="120" y="98" width="90" height="40" rx="4"
+                fill="url(#hatch)" stroke="none"/>
+          <defs>
+            <pattern id="hatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+              <rect width="8" height="8" fill="#F8DDDB"/>
+              <line x1="0" y1="0" x2="0" y2="8" stroke="#C22E28" stroke-width="3.2" opacity=".55"/>
+            </pattern>
+          </defs>
+
+          <!-- startline marker -->
+          <g id="startMark">
+            <line x1="120" y1="72" x2="120" y2="152" stroke="#3A34D6" stroke-width="3"/>
+            <text x="120" y="64" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="700" font-size="14" fill="#3A34D6">Startline</text>
+            <text x="120" y="170" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="#4A5768">2 Nov</text>
+          </g>
+
+          <!-- today -->
+          <line x1="210" y1="86" x2="210" y2="150" stroke="#1B2430" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="210" y="182" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="#1B2430">Today, 8 Nov</text>
+
+          <!-- deadline -->
+          <line x1="460" y1="72" x2="460" y2="152" stroke="#1B2430" stroke-width="3"/>
+          <text x="460" y="64" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="700" font-size="14" fill="#1B2430">Due</text>
+          <text x="460" y="170" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="#4A5768">20 Nov</text>
+
+          <!-- verdict -->
+          <text x="20" y="203" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#C22E28">Six days of that window are already gone.</text>
+        </svg>
+        <figcaption>Same deadline. Same student. The only thing added is a start date — and it turns out it was last week.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--surface);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Three inputs, one answer</h2>
+        <p>No account, no sync, no notifications begging for attention. You fill in what you owe and how much time you have, and it does arithmetic you were never going to do by hand.</p>
+      </div>
+      <div class="beats">
+        <div class="beat">
+          <span class="beat-step">First</span>
+          <h3>List what you owe</h3>
+          <p>Every assessment across every course, with its deadline, what it's worth, and an honest guess at the hours. Guessing badly is fine — you can change one number and watch the whole semester rearrange.</p>
+        </div>
+        <div class="beat">
+          <span class="beat-step">Then</span>
+          <h3>Declare your real week</h3>
+          <p>Not the 40 hours you imagine having. The 12 or 15 that survive lectures, work, commuting and sleep. Every result below is built on that one honest number.</p>
+        </div>
+        <div class="beat">
+          <span class="beat-step">Finally</span>
+          <h3>Collect your startlines</h3>
+          <p>Each task gets the last day you can begin it. Where two tasks want the same hours, the clash is already resolved — so the dates you see are ones you can actually keep.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Why start dates and not better reminders</h2>
+        <p>Students are not short of deadline reminders. The research points somewhere else entirely.</p>
+      </div>
+      <div class="ev">
+        <div class="ev-item">
+          <span class="ev-fig">80&ndash;95%</span>
+          <p>of university students procrastinate on coursework, according to a meta-analysis of the field. It is the normal condition of studying, not a character flaw in a minority.</p>
+          <p class="ev-src">Steel, P. (2007). <i>Psychological Bulletin</i>, 133(1), 65&ndash;94.</p>
+        </div>
+        <div class="ev-item">
+          <span class="ev-fig">55.5 vs 48.6</span>
+          <p>Students writing a thesis took 55.5 days on average. Their own <i>worst-case</i> estimate had been 48.6 days. The pessimistic guess was still optimistic.</p>
+          <p class="ev-src">Buehler, Griffin &amp; Ross (1994). <i>Journal of Personality and Social Psychology</i>, 67(3), 366&ndash;381.</p>
+        </div>
+        <div class="ev-item">
+          <span class="ev-fig">d&nbsp;=&nbsp;0.65</span>
+          <p>Deciding in advance <i>when</i> you will act has a medium-to-large effect on whether you actually do it, across 94 independent tests. That is the single lever this tool pulls.</p>
+          <p class="ev-src">Gollwitzer &amp; Sheeran (2006). <i>Advances in Experimental Social Psychology</i>, 38, 69&ndash;119.</p>
+        </div>
+      </div>
+      <p class="small muted" style="margin-top:var(--sp-4);max-width:68ch">The full argument, the survey I ran, and the limits of what this can and cannot fix are set out on the <a href="problem-solution.html">Problem &amp; Solution</a> page.</p>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--surface);border-top:1px solid var(--line)">
+    <div class="wrap-narrow" style="text-align:center">
+      <h2 style="font-size:clamp(26px,3.4vw,36px);margin-bottom:var(--sp-3)">Find out how late you already are</h2>
+      <p class="muted" style="margin-inline:auto">The planner loads with a full example semester, so you can see the whole thing working before typing anything of your own.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn btn-primary" href="planner.html">Open the planner</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Startline</strong> — built for DesignAthon 2026, GDC RIT Dubai in partnership with +TWE.</p>
+    <p>Everything runs in your browser. Your courses and deadlines are saved to this device only, never uploaded, and you can export or delete the lot at any time from the planner.</p>
+  </div>
+</footer>
+
+<script>
+  // One orchestrated motion on load: the startline slides out from under the
+  // deadline to where it actually falls, so the gap is something you watch
+  // open rather than something you're told about. Skipped entirely for anyone
+  // who has asked for reduced motion.
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reduce.matches) return;
+    var mark = document.getElementById('startMark');
+    var win = document.getElementById('win');
+    if (!mark || !win) return;
+    mark.style.transform = 'translateX(340px)';
+    win.setAttribute('width', '0');
+    win.setAttribute('x', '460');
+    requestAnimationFrame(function () {
+      setTimeout(function () {
+        mark.style.transition = 'transform 900ms cubic-bezier(.22,.7,.3,1)';
+        mark.style.transform = 'translateX(0)';
+        win.style.transition = 'all 900ms cubic-bezier(.22,.7,.3,1)';
+        win.setAttribute('width', '340');
+        win.setAttribute('x', '120');
+      }, 250);
+    });
+  })();
+</script>
+</body>
+</html>

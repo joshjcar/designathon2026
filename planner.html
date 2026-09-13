@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planner — Startline</title>
+<meta name="description" content="Enter your courses and assessments. Startline computes the last honest day you can begin each one.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%233A34D6'/><rect x='7' y='7' width='4' height='18' fill='white'/><rect x='15' y='14' width='10' height='4' fill='white' opacity='.85'/></svg>">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="#3A34D6"/>
+        <rect x="7" y="7" width="4" height="18" fill="#fff"/>
+        <rect x="15" y="14" width="10" height="4" fill="#fff" opacity=".85"/>
+      </svg>
+      Startline
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="planner.html" aria-current="page">Planner</a>
+      <a href="problem-solution.html">Problem &amp; Solution</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="planner">
+  <div class="wrap" style="margin-bottom:var(--sp-4)">
+    <h1 style="font-size:clamp(25px,3.2vw,32px)">Your semester</h1>
+    <p class="muted" style="margin:var(--sp-2) 0 0">Every assessment below carries a start date worked out from the hours you actually have.</p>
+  </div>
+  <div class="wrap planner-grid">
+
+    <!-- ============ controls ============ -->
+    <div class="rail stack">
+
+      <section class="panel" aria-labelledby="h-week">
+        <h2 id="h-week">Your week</h2>
+        <div class="field">
+          <label for="weeklyHours">Free hours for coursework each week</label>
+          <input type="number" id="weeklyHours" min="1" max="80" step="1" inputmode="numeric">
+          <p class="hint">Hours left after lectures, work, travel and sleep. Be honest — every date below depends on this.</p>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="semStart">Semester starts</label>
+            <input type="date" id="semStart">
+          </div>
+          <div class="field">
+            <label for="semEnd">Semester ends</label>
+            <input type="date" id="semEnd">
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="h-addtask">
+        <h2 id="h-addtask">Add an assessment</h2>
+        <form id="taskForm" novalidate>
+          <div class="field" id="f-title">
+            <label for="tTitle">What is it</label>
+            <input type="text" id="tTitle" maxlength="80" autocomplete="off" aria-describedby="e-title">
+            <p class="field-error" id="e-title" hidden></p>
+          </div>
+          <div class="field" id="f-course">
+            <label for="tCourse">Course</label>
+            <select id="tCourse" aria-describedby="e-course"></select>
+            <p class="field-error" id="e-course" hidden></p>
+          </div>
+          <div class="field">
+            <label for="tType">Kind of work</label>
+            <select id="tType"></select>
+            <p class="hint">Choosing a kind fills in a starting estimate of the hours. Change it to whatever is true for you.</p>
+          </div>
+          <div class="field-row">
+            <div class="field" id="f-due">
+              <label for="tDue">Due date</label>
+              <input type="date" id="tDue" aria-describedby="e-due">
+              <p class="field-error" id="e-due" hidden></p>
+            </div>
+            <div class="field" id="f-hours">
+              <label for="tHours">Hours of work</label>
+              <input type="number" id="tHours" min="0" max="300" step="0.5" inputmode="decimal" aria-describedby="e-hours">
+              <p class="field-error" id="e-hours" hidden></p>
+            </div>
+          </div>
+          <div class="field" id="f-weight">
+            <label for="tWeight">Worth this much of the course grade (%)</label>
+            <input type="number" id="tWeight" min="0" max="100" step="1" inputmode="numeric" aria-describedby="e-weight">
+            <p class="field-error" id="e-weight" hidden></p>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%">Add assessment</button>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="h-courses">
+        <h2 id="h-courses">Courses</h2>
+        <ul class="tasklist" id="courseList"></ul>
+        <form id="courseForm" novalidate style="margin-top:var(--sp-3);border-top:1px solid var(--line);padding-top:var(--sp-3)">
+          <div class="field-row">
+            <div class="field" id="f-ccode">
+              <label for="cCode">Code</label>
+              <input type="text" id="cCode" maxlength="12" placeholder="ISTE-121" autocomplete="off" aria-describedby="e-ccode">
+            </div>
+            <div class="field">
+              <label for="cCredits">Credits</label>
+              <input type="number" id="cCredits" min="1" max="12" step="1" value="3" inputmode="numeric">
+            </div>
+          </div>
+          <div class="field">
+            <label for="cName">Course name</label>
+            <input type="text" id="cName" maxlength="60" autocomplete="off">
+          </div>
+          <p class="field-error" id="e-ccode" hidden></p>
+          <button type="submit" class="btn" style="width:100%">Add course</button>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="h-data">
+        <h2 id="h-data">Your data</h2>
+        <p class="small muted">Saved in this browser only. Nothing is sent anywhere, and there is no account to make.</p>
+        <div style="display:flex;flex-direction:column;gap:var(--sp-2)">
+          <button type="button" class="btn" id="btnDemo">Load example semester</button>
+          <button type="button" class="btn" id="btnIcs">Download calendar file</button>
+          <button type="button" class="btn" id="btnExport">Export as a file</button>
+          <button type="button" class="btn" id="btnImportTrigger">Import from a file</button>
+          <input type="file" id="fileImport" accept="application/json,.json" style="display:none" tabindex="-1"
+                 aria-label="Choose a Startline export file to import">
+          <button type="button" class="btn btn-danger" id="btnReset">Erase everything</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ results ============ -->
+    <div class="stack">
+
+      <div id="verdict" role="status" aria-live="polite"></div>
+
+      <div class="kpis" id="kpis"></div>
+
+      <section class="panel" aria-labelledby="h-now">
+        <h2 id="h-now">What to start</h2>
+        <div id="nowList"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="h-load">
+        <h2 id="h-load">Week by week load</h2>
+        <p class="small muted" id="loadIntro"></p>
+
+        <div id="chartWrap">
+          <div class="chart-scroll">
+            <div class="weekchart" id="weekChart"></div>
+          </div>
+          <div class="legend" id="legend"></div>
+        </div>
+
+        <div id="tableWrap" hidden>
+          <table class="datatable" id="weekTable">
+            <caption class="sr-only">Hours of work required in each week of the semester, compared with your weekly capacity</caption>
+            <thead>
+              <tr>
+                <th scope="col">Week beginning</th>
+                <th scope="col" class="num">Hours needed</th>
+                <th scope="col" class="num">Hours available</th>
+                <th scope="col">Load</th>
+                <th scope="col" class="num">Grade due</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <p style="margin:var(--sp-3) 0 0">
+          <button type="button" class="btn btn-sm" id="btnToggleView" aria-pressed="false">Show as a table</button>
+        </p>
+
+        <div id="weekDetail" aria-live="polite"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="h-windows">
+        <h2 id="h-windows">Work windows</h2>
+        <p class="small muted">Each bar runs from the day you need to start to the day it is due. A hatched bar means the start date has already passed.</p>
+        <div class="chart-scroll" id="timelineWrap"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="h-all">
+        <h2 id="h-all">All assessments</h2>
+        <div id="allList"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="h-how">
+        <h2 id="h-how">How these dates are worked out</h2>
+        <ol class="small muted" style="padding-left:20px;margin:0">
+          <li>Your weekly hours are spread evenly across seven days to give a daily budget.</li>
+          <li>Assessments are handled in deadline order, nearest first.</li>
+          <li>Each one claims hours backwards from the day before it is due, taking whatever is left unclaimed on each day. The earliest day it claims is its startline.</li>
+          <li>Because the day budget is shared, a task that arrives late to the queue is pushed further back — which is exactly what happens to you in real life.</li>
+          <li>Grade due in a week counts each assessment's weight scaled by its course credits, so a 30% assessment in a 4-credit course outranks a 30% assessment in a 3-credit one.</li>
+        </ol>
+        <p class="small muted" style="margin-top:var(--sp-3)">This is a deliberately simple, explainable rule rather than an optimal schedule. A truly optimal timetable is both computationally hard and impossible to argue with when it tells you something you don't want to hear.</p>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Startline</strong> — built for DesignAthon 2026, GDC RIT Dubai in partnership with +TWE.</p>
+    <p>Everything runs in your browser. Nothing is uploaded.</p>
+  </div>
+</footer>
+
+<script src="assets/engine.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
