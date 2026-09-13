@@ -8,6 +8,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+/* Set the theme before first paint so the page never flashes the wrong one. */
+(function(){try{var t=localStorage.getItem('startline.theme');
+if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+document.documentElement.setAttribute('data-theme',t);}catch(e){
+document.documentElement.setAttribute('data-theme','light');}})();
+</script>
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233B31E8'/><rect x='7' y='6' width='5' height='20' rx='2.5' fill='white'/><rect x='16' y='14' width='9' height='4' rx='2' fill='white' opacity='.8'/></svg>">
 </head>
@@ -24,11 +31,17 @@
       </svg>
       Startline
     </a>
-    <nav class="nav" aria-label="Main">
+    <div class="masthead-right">
+      <nav class="nav" aria-label="Main">
       <a href="index.html" aria-current="page">Home</a>
       <a href="planner.html">Planner</a>
       <a href="problem-solution.html">Problem &amp; Solution</a>
-    </nav>
+      </nav>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" aria-pressed="false">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -53,35 +66,35 @@
 
           <defs>
             <pattern id="hatch" width="10" height="10" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-              <rect width="10" height="10" fill="#BE2A24"/>
-              <line x1="0" y1="0" x2="0" y2="10" stroke="#ffffff" stroke-width="4" opacity=".45"/>
+              <rect width="10" height="10" class="svg-hatch-bg"/>
+              <line x1="0" y1="0" x2="0" y2="10" class="svg-hatch-stripe" stroke-width="4"/>
             </pattern>
           </defs>
 
-          <text x="30" y="36" font-family="Inter Tight, sans-serif" font-size="15" font-weight="600" fill="#4C5773">Report, 4,000 words</text>
-          <text x="30" y="58" font-family="Inter Tight, sans-serif" font-size="15" fill="#5C6680">18 hours of work at 7 free hours a week</text>
+          <text x="30" y="36" font-family="Inter Tight, sans-serif" font-size="15" font-weight="600" class="svg-ink2">Report, 4,000 words</text>
+          <text x="30" y="58" font-family="Inter Tight, sans-serif" font-size="15" class="svg-ink3">18 hours of work at 7 free hours a week</text>
 
-          <rect x="30" y="150" width="500" height="6" rx="3" fill="#E0E2E8"/>
+          <rect x="30" y="150" width="500" height="6" rx="3" class="svg-track"/>
 
-          <rect id="win" x="140" y="132" width="350" height="42" rx="8" fill="#EEEDFD"/>
+          <rect id="win" x="140" y="132" width="350" height="42" rx="8" class="svg-window"/>
           <rect id="gone" x="140" y="132" width="92" height="42" rx="8" fill="url(#hatch)"/>
 
           <g id="startMark">
-            <rect x="137" y="104" width="6" height="98" rx="3" fill="#3B31E8"/>
-            <text x="140" y="94" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="19" fill="#3B31E8">Startline</text>
-            <text x="140" y="226" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="15" font-weight="600" fill="#101A33">2 Nov</text>
+            <rect x="137" y="104" width="6" height="98" rx="3" class="svg-brand"/>
+            <text x="140" y="94" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="19" class="svg-brand">Startline</text>
+            <text x="140" y="226" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="15" font-weight="600" class="svg-ink">2 Nov</text>
           </g>
 
-          <line x1="232" y1="116" x2="232" y2="196" stroke="#101A33" stroke-width="2" stroke-dasharray="5 5"/>
-          <text x="232" y="252" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="14" fill="#4C5773">today</text>
-          <text x="232" y="270" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="14" font-weight="600" fill="#101A33">8 Nov</text>
+          <line x1="232" y1="116" x2="232" y2="196" class="svg-stroke-ink" stroke-width="2" stroke-dasharray="5 5"/>
+          <text x="232" y="252" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="14" class="svg-ink2">today</text>
+          <text x="232" y="270" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="14" font-weight="600" class="svg-ink">8 Nov</text>
 
-          <rect x="487" y="104" width="6" height="98" rx="3" fill="#101A33"/>
-          <text x="490" y="94" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="19" fill="#101A33">Due</text>
-          <text x="490" y="226" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="15" font-weight="600" fill="#101A33">20 Nov</text>
+          <rect x="487" y="104" width="6" height="98" rx="3" class="svg-ink"/>
+          <text x="490" y="94" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="19" class="svg-ink">Due</text>
+          <text x="490" y="226" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="15" font-weight="600" class="svg-ink">20 Nov</text>
 
-          <rect x="30" y="288" width="300" height="28" rx="14" fill="#FADEDC"/>
-          <text x="48" y="307" font-family="Inter Tight, sans-serif" font-size="14.5" font-weight="700" fill="#7E1C17">Six days of that window are already gone</text>
+          <rect x="30" y="288" width="300" height="28" rx="14" class="svg-overt"/>
+          <text x="48" y="307" font-family="Inter Tight, sans-serif" font-size="14.5" font-weight="700" class="svg-severe">Six days of that window are already gone</text>
         </svg>
         <figcaption>Same deadline, same student. The only thing added is a start date — and it turns out it was last week.</figcaption>
       </figure>
@@ -191,5 +204,6 @@
     });
   })();
 </script>
+<script src="assets/theme.js"></script>
 </body>
 </html>

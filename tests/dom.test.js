@@ -33,6 +33,11 @@ window.URL.createObjectURL = () => 'blob:stub';
 window.URL.revokeObjectURL = () => {};
 let confirmAnswer = true;
 window.confirm = () => confirmAnswer;
+let systemDark = false;
+window.matchMedia = q => ({
+  matches: /dark/.test(q) ? systemDark : false,
+  media: q, addEventListener(){}, removeEventListener(){}, addListener(){}, removeListener(){}
+});
 
 // load our two scripts manually (jsdom won't fetch local <script src>)
 function inject(file) {
@@ -45,6 +50,7 @@ console.log('\n--- boot ---');
 try {
   inject('engine.js');
   inject('app.js');
+  inject('theme.js');
   check('scripts executed without throwing', true);
 } catch (e) {
   check('scripts executed without throwing', false, e.message);
@@ -254,6 +260,38 @@ check('all buttons have accessible text', (function () {
   });
   return bad.length === 0;
 })());
+
+console.log('\n--- theme ---');
+const rootEl = doc.documentElement;
+check('data-theme is set before paint', ['light','dark'].includes(rootEl.getAttribute('data-theme')),
+  rootEl.getAttribute('data-theme'));
+const tBtn = $('themeToggle');
+check('toggle button exists', !!tBtn);
+check('toggle has an accessible name', !!tBtn && !!tBtn.getAttribute('aria-label'),
+  tBtn && tBtn.getAttribute('aria-label'));
+check('toggle carries aria-pressed', !!tBtn && tBtn.hasAttribute('aria-pressed'));
+check('toggle holds both icons',
+  !!tBtn && !!tBtn.querySelector('.icon-moon') && !!tBtn.querySelector('.icon-sun'));
+check('toggle icons are hidden from screen readers',
+  !!tBtn && Array.from(tBtn.querySelectorAll('svg')).every(x => x.getAttribute('aria-hidden') === 'true'));
+
+const startTheme = rootEl.getAttribute('data-theme');
+tBtn.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+const flipped = rootEl.getAttribute('data-theme');
+check('clicking flips the theme', flipped !== startTheme, startTheme + ' -> ' + flipped);
+check('choice is persisted', window.localStorage.getItem('startline.theme') === flipped,
+  String(window.localStorage.getItem('startline.theme')));
+check('aria-pressed tracks the theme',
+  tBtn.getAttribute('aria-pressed') === String(flipped === 'dark'));
+check('label offers the other theme',
+  tBtn.getAttribute('aria-label').includes(flipped === 'dark' ? 'light' : 'dark'),
+  tBtn.getAttribute('aria-label'));
+
+tBtn.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+check('clicking again flips back', rootEl.getAttribute('data-theme') === startTheme);
+check('planner still renders after theme changes',
+  $('allList').querySelectorAll('.taskrow').length === 10,
+  String($('allList').querySelectorAll('.taskrow').length));
 
 console.log('\n--- no runtime errors overall ---');
 const realErrors = errors.filter(e => !e.startsWith('unlabelled') && !/css|stylesheet/i.test(e));
